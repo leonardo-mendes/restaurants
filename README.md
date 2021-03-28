@@ -1,4 +1,4 @@
-# Restaurant Challenge [![Build Status](https://travis-ci.org/leonardo-mendes/restaurants.svg?branch=master)](https://travis-ci.org/leonardo-mendes/restaurants)
+# Restaurant Challenge [![Build Status](https://travis-ci.org/leonardo-mendes/restaurants.svg?branch=master)](https://travis-ci.org/leonardo-mendes/restaurants) [![codecov](https://codecov.io/gh/leonardo-mendes/restaurants/branch/master/graph/badge.svg?token=MTP9VDFF0K)](https://codecov.io/gh/leonardo-mendes/restaurants)
 
 ### About
 
