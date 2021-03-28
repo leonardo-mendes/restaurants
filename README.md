@@ -1,4 +1,4 @@
-# Restaurant Challenge [![Build Status](https://travis-ci.org/leonardo-mendes/restaurants.svg?branch=master)](https://travis-ci.org/leonardo-mendes/restaurants) [![codecov](https://codecov.io/gh/leonardo-mendes/restaurants/branch/master/graph/badge.svg?token=MTP9VDFF0K)](https://codecov.io/gh/leonardo-mendes/restaurants)
+# Restaurant Challenge [![Build Status](https://travis-ci.org/leonardo-mendes/restaurants.svg?branch=master)](https://travis-ci.org/leonardo-mendes/restaurants)
 
 ### About
 
@@ -34,5 +34,5 @@ FindRestaurantRequest {
 
 #### Used Tools
 
-[Spring Boot](https://spring.io/projects/spring-boot) - [Kotlin](https://kotlinlang.org/) - [Gradle](https://docs.gradle.org) - [Swagger](https://swagger.io/) - [OpenCSV](http://opencsv.sourceforge.net/) - [Junit](https://junit.org/junit5/) - [Travis-CI](https://travis-ci.org/) - [Codecov](https://about.codecov.io/)
+[Spring Boot](https://spring.io/projects/spring-boot) - [Kotlin](https://kotlinlang.org/) - [Gradle](https://docs.gradle.org) - [Swagger](https://swagger.io/) - [OpenCSV](http://opencsv.sourceforge.net/) - [Junit](https://junit.org/junit5/) - [Travis-CI](https://travis-ci.org/)
 
