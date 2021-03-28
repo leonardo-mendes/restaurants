@@ -2,7 +2,7 @@
 
 ### About
 
-This is a simple application to find the best restaurant for your order.
+This is a simple challenge application to find the best restaurant for your order.
 
 ### Running the application
 
