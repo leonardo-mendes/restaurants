@@ -1,7 +1,7 @@
 package com.restaurant.searcher.resource.validation
 
 import com.restaurant.searcher.error.exception.InvalidFieldRequestException
-import com.restaurant.searcher.resource.request.FindRestaurant
+import com.restaurant.searcher.resource.request.RestaurantFilterRequest
 import com.restaurant.searcher.resource.validation.util.Messages.distanceErrorMessage
 import com.restaurant.searcher.resource.validation.util.Messages.priceErrorMessage
 import com.restaurant.searcher.resource.validation.util.Messages.ratingErrorMessage
@@ -16,7 +16,7 @@ object RestaurantRequestValidation {
     const val maxPrice: Int = 50;
     const val minPrice: Int = 10;
 
-    fun validate(request: FindRestaurant) {
+    fun validate(request: RestaurantFilterRequest) {
         request.apply {
             this.distance?.let { validateDistance(this.distance!!) }
             this.customerRating?.let { validateRating(this.customerRating!!) }
@@ -26,25 +26,25 @@ object RestaurantRequestValidation {
         }
     }
 
-    private fun validateDistance(distance: Int): Unit {
+    private fun validateDistance(distance: Int) {
         if ((distance > maxDistance).or(distance < minDistance)) {
             throw InvalidFieldRequestException(distanceErrorMessage)
         }
     }
 
-    private fun validateRating(rating: Int): Unit {
+    private fun validateRating(rating: Int) {
         if ((rating > maxRating).or(rating < minRating)) {
             throw InvalidFieldRequestException(ratingErrorMessage)
         }
     }
 
-    private fun validatePrice(price: Int): Unit {
+    private fun validatePrice(price: Int) {
         if ((price > maxPrice).or(price < minPrice)) {
             throw InvalidFieldRequestException(priceErrorMessage)
         }
     }
 
-    private fun validateString(field: String, value: String): Unit {
+    private fun validateString(field: String, value: String) {
         if (isBlank(value)) {
             throw InvalidFieldRequestException(stringErrorMessage(field))
         }

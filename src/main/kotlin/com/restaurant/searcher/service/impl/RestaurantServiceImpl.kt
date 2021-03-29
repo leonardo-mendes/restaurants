@@ -1,7 +1,7 @@
 package com.restaurant.searcher.service.impl
 
 import com.restaurant.searcher.config.cache.domain.CachedRestaurants.cachedRestaurants
-import com.restaurant.searcher.resource.request.FindRestaurant
+import com.restaurant.searcher.resource.request.RestaurantFilterRequest
 import com.restaurant.searcher.resource.response.RestaurantResponse
 import com.restaurant.searcher.service.RestaurantService
 import com.restaurant.searcher.service.comparator.RestaurantComparator
@@ -20,7 +20,7 @@ class RestaurantServiceImpl : RestaurantService {
     @Autowired
     lateinit var filterService: FilterService;
 
-    override fun findRestaurants(request: FindRestaurant): List<RestaurantResponse> {
+    override fun findRestaurants(request: RestaurantFilterRequest): List<RestaurantResponse> {
         return cachedRestaurants.stream()
             .filter(filterService.apply(request))
             .sorted(RestaurantComparator.apply())

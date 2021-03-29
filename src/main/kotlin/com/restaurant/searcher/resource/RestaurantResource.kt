@@ -1,6 +1,6 @@
 package com.restaurant.searcher.resource
 
-import com.restaurant.searcher.resource.request.FindRestaurant
+import com.restaurant.searcher.resource.request.RestaurantFilterRequest
 import com.restaurant.searcher.resource.response.RestaurantResponse
 import com.restaurant.searcher.service.RestaurantService
 import org.springframework.beans.factory.annotation.Autowired
@@ -17,7 +17,7 @@ class RestaurantResource {
     lateinit var service: RestaurantService;
 
     @PostMapping
-    fun findRestaurant(@RequestBody request: FindRestaurant): List<RestaurantResponse> {
+    fun filterRestaurant(@RequestBody request: RestaurantFilterRequest): List<RestaurantResponse> {
         request.validate()
             .also { return service.findRestaurants(request) };
     }

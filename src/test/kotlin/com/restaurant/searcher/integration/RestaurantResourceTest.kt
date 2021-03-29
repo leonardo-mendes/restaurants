@@ -2,7 +2,7 @@ package com.restaurant.searcher.integration
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.restaurant.searcher.config.cache.domain.CachedRestaurants
-import com.restaurant.searcher.resource.request.FindRestaurant
+import com.restaurant.searcher.resource.request.RestaurantFilterRequest
 import com.restaurant.searcher.resource.response.RestaurantResponse
 import com.restaurant.searcher.resource.validation.util.Messages.distanceErrorMessage
 import com.restaurant.searcher.resource.validation.util.Messages.priceErrorMessage
@@ -49,7 +49,7 @@ class RestaurantResourceTest {
             post(RESTAURANT_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(FindRestaurant("Lucha Yummy", null, null, null, null)))
+                .content(mapper.writeValueAsString(RestaurantFilterRequest("Lucha Yummy", null, null, null, null)))
         )
             .andExpect(status().isOk)
             .andExpect(jsonPath("$", hasSize<RestaurantResponse>(1)))
@@ -66,7 +66,7 @@ class RestaurantResourceTest {
             post(RESTAURANT_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(FindRestaurant(" ", null, null, null, null)))
+                .content(mapper.writeValueAsString(RestaurantFilterRequest(" ", null, null, null, null)))
         )
             .andExpect(status().isBadRequest)
             .andExpect(jsonPath(JSON_EXPRESSION, Matchers.`is`(stringErrorMessage("Restaurant name"))));
@@ -78,7 +78,7 @@ class RestaurantResourceTest {
             post(RESTAURANT_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(FindRestaurant(null, null, null, null, " ")))
+                .content(mapper.writeValueAsString(RestaurantFilterRequest(null, null, null, null, " ")))
         )
             .andExpect(status().isBadRequest)
             .andExpect(jsonPath(JSON_EXPRESSION, Matchers.`is`(stringErrorMessage("Cuisine name"))));
@@ -90,7 +90,7 @@ class RestaurantResourceTest {
             post(RESTAURANT_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(FindRestaurant(null, 10, null, null, null)))
+                .content(mapper.writeValueAsString(RestaurantFilterRequest(null, 10, null, null, null)))
         )
             .andExpect(status().isBadRequest)
             .andExpect(jsonPath(JSON_EXPRESSION, Matchers.`is`(ratingErrorMessage)))
@@ -102,7 +102,7 @@ class RestaurantResourceTest {
             post(RESTAURANT_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(FindRestaurant(null, null, 11, null, null)))
+                .content(mapper.writeValueAsString(RestaurantFilterRequest(null, null, 11, null, null)))
         )
             .andExpect(status().isBadRequest)
             .andExpect(
@@ -119,7 +119,7 @@ class RestaurantResourceTest {
             post(RESTAURANT_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .content(mapper.writeValueAsString(FindRestaurant(null, null, null, 100, null)))
+                .content(mapper.writeValueAsString(RestaurantFilterRequest(null, null, null, 100, null)))
         )
             .andExpect(status().isBadRequest)
             .andExpect(jsonPath(JSON_EXPRESSION, Matchers.`is`(priceErrorMessage)))
