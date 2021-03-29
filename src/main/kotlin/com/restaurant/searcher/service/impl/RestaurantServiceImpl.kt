@@ -5,7 +5,8 @@ import com.restaurant.searcher.resource.request.FindRestaurant
 import com.restaurant.searcher.resource.response.RestaurantResponse
 import com.restaurant.searcher.service.RestaurantService
 import com.restaurant.searcher.service.comparator.RestaurantComparator
-import com.restaurant.searcher.service.filter.RestaurantPredicate
+import com.restaurant.searcher.service.filter.FilterService
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
 import kotlin.streams.toList
@@ -16,9 +17,12 @@ class RestaurantServiceImpl : RestaurantService {
     @Value("\${result.max}")
     lateinit var maxMatches: String;
 
+    @Autowired
+    lateinit var filterService: FilterService;
+
     override fun findRestaurants(request: FindRestaurant): List<RestaurantResponse> {
         return cachedRestaurants.stream()
-            .filter(RestaurantPredicate.apply(request))
+            .filter(filterService.apply(request))
             .sorted(RestaurantComparator.apply())
             .limit(maxMatches.toLong())
             .map { it.buildResponse() }

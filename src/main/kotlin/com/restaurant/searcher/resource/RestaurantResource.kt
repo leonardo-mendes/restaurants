@@ -1,6 +1,5 @@
 package com.restaurant.searcher.resource
 
-import com.restaurant.searcher.domain.Restaurant
 import com.restaurant.searcher.resource.request.FindRestaurant
 import com.restaurant.searcher.resource.response.RestaurantResponse
 import com.restaurant.searcher.service.RestaurantService
